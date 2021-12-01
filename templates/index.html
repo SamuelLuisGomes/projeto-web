@@ -6,6 +6,25 @@
     <title>Projeto Prova</title>
 </head>
 <body>
+    <nav class="navbar navbar-expand-lg fixed-top navbar-dark bg-dark" aria-label="Main navigation">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#">Mangás</a>
+            <form class="d-flex" action="/pesquisar" method="POST">
+              <input class="form-control me-2" type="text" name ="pesquisa" placeholder="Encontrar Mangás">
+              <button class="btn btn-outline-success">Pesquisar</button>
+            </form>
+          </div>
+        </div>
+      </nav><br><br><br><br>
+
+
+
+
+
+
+
+
+
 
     <div class="container">
         <h2>Lista de Mangás</h2>
@@ -14,18 +33,21 @@
                     <tr>
                       <th scope="col">Nome</th>
                       <th scope="col">Autor</th>
+                      <th scope="col">Genero</th>
                     </tr>
                   </thead>
                   <tbody>
                     {% for mangas in lista: %}
                         <tr>
-                            <td>{{ mangas ['Nome']}}</td>
-                            <td>{{ mangas ['Autor']}}</td>
+                            <td>{{ mangas ['nome']}}</td>
+                            <td>{{ mangas ['autor']}}</td>
+                            <td>{{ mangas ['genero']}}</td>
                         </tr>
                     {% endfor %}
                 </tbody>
             </table>
-        <a href="/cadastro" class="btn btn-primary">Cadastro</a>
+        <a href="/cadastro" class="btn btn btn-outline-primary">Cadastro</a>
+        <a href="/criar" class="btn btn btn-outline-danger">Excluir</a>
     </div>
 
 

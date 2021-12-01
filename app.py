@@ -4,6 +4,8 @@ app = Flask(__name__)
 
 mangas = [
 
+    {"nome": "Kimetsu", "autor": "Samuel Gomes","genero": "Terror"},
+    {"nome": "Psico 100", "autor": "Mariana", "genero": "Acao"},
 ]
 
 @app.route('/')
@@ -20,10 +22,39 @@ def salvar():
 
     nome = request.form['nome']
     autor = request.form['autor']
+    genero = request.form['genero']
 
-    manga  = { 'Nome' : f' { nome } ' , 'Autor' : f' { autor }'}
-    mangas.append(manga)
+    manga  = { 'nome' : f' { nome } ' , 'autor' : f' { autor }', 'genero' : f' { genero}'}
+    if nome != '' and autor != '' and genero != '':
+        mangas.append(manga)
+        return redirect('https://5000-orange-ferret-9qlxj7ii.ws-us20.gitpod.io/')
 
-    return redirect('https://5000-yellow-warbler-yejaefyk.ws-us17.gitpod.io/', code=302)
+    return render_template('erro.html')
+
+@app.route('/criar')
+def criador():
+    return render_template('excluir.html')
+
+
+@app.route('/excluir', methods=['POST'])
+def excluir():
+    deletar = request.form['excluir']
+    for manga in mangas:
+        if manga['nome'].lower() == deletar.lower() :
+            mangas.remove(manga)
+    return render_template('index.html', lista=mangas)
+
+
+
+@app.route('/pesquisar', methods=['POST'])
+def pesquisar():
+    listar_mangas = []
+    pesquisa_manga = request.form['pesquisa']
+    if pesquisa_manga == "":
+        return render_template('erro.html')
+    for manga in mangas: 
+        if pesquisa_manga.lower() in manga['nome'].lower():
+            listar_mangas.append(manga)
+    return render_template('pesquisar.html', listar_mangas=listar_mangas)
 
 app.run(debug=True)
