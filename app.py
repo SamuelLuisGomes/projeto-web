@@ -4,8 +4,13 @@ app = Flask(__name__)
 
 mangas = [
 
-    {"nome": "Kimetsu", "autor": "Samuel Gomes","genero": "Terror"},
-    {"nome": "Psico 100", "autor": "Mariana", "genero": "Acao"},
+    {"nome": "Kimetsu no Yaiba", "autor": "Koyoharu Gotouge ","genero": "Sobrenatural"},
+    {"nome": "Mob Psycho 100", "autor": "Kouhei Horikoshi  ", "genero": "Sobrenatural"},
+    {"nome": "Solo Leveling", "autor": "Jang Sung-Lak", "genero": "Acao"},
+    {"nome": "Mashle", "autor": "Hajime Koumoto", "genero": "Shounen"},
+    {"nome": "Dr. Stone", "autor": "Inagaki", "genero": "Sci-Fi"},
+    {"nome": "Tokyo Revengers", "autor": "Ken Wakui", "genero": "Escolar"},
+    {"nome": "Mercenary Enrollment", "autor": "Rakhyun", "genero": "Aventura"},
 ]
 
 @app.route('/')
@@ -27,7 +32,7 @@ def salvar():
     manga  = { 'nome' : f' { nome } ' , 'autor' : f' { autor }', 'genero' : f' { genero}'}
     if nome != '' and autor != '' and genero != '':
         mangas.append(manga)
-        return redirect('https://5000-orange-ferret-9qlxj7ii.ws-us20.gitpod.io/')
+        return redirect('https://5000-tomato-dinosaur-nt0agydi.ws-us21.gitpod.io/')
 
     return render_template('erro.html')
 
