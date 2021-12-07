@@ -32,7 +32,7 @@ def salvar():
     manga  = { 'nome' : f' { nome } ' , 'autor' : f' { autor }', 'genero' : f' { genero}'}
     if nome != '' and autor != '' and genero != '':
         mangas.append(manga)
-        return redirect('https://5000-tomato-dinosaur-nt0agydi.ws-us21.gitpod.io/')
+        return redirect('https://5000-chocolate-antelope-cbyh5rpj.ws-us21.gitpod.io/')
 
     return render_template('erro.html')
 
